@@ -13,9 +13,6 @@ jobs:
     steps:
       - name: 'Checkout latest code'
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
       - name: Setup node
         uses: actions/setup-node@v3
         with:
@@ -29,11 +26,8 @@ jobs:
     name: 'Check types'
     runs-on: ubuntu-latest
     steps:
-      - name: Check out latest code
+      - name: Checkout latest code
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
       - name: Set up node
         uses: actions/setup-node@v3
         with:
