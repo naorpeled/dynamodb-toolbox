@@ -11,9 +11,10 @@ jobs:
         node: [ 10, 12, 14, 16, 18 ]
     name: Node ${{ matrix.node }}
     steps:
-      - uses: actions/checkout@v3
-      with:
-        ref: ${{ github.event.pull_request.head.sha }}
+      - name: 'Checkout latest code'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Setup node
         uses: actions/setup-node@v3
         with:
@@ -27,7 +28,7 @@ jobs:
     name: 'Check types'
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
+      - name: Check out latest code
         uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
